@@ -1,0 +1,77 @@
+{
+  "name": "layui-vue-sample-electron-builder",
+  "version": "0.0.1",
+  "description": "一个生成全平台的测试demo",
+  "homepage": "https://github.com/pzen666/pzen-springboot-17-demo",
+  "main": "main.js",
+  "author": {
+    "name": "cheng",
+    "email": "896911036@163.com",
+    "url": "https://github.com/pzen666/pzen-springboot-17-demo"
+  },
+  "scripts": {
+    "dev": "NODE_ENV=dev vite",
+    "build": "cross-env NODE_ENV=dev vite build",
+    "serve": "vite preview",
+    "electron:dev": "vite && electron .",
+    "electron:start": "cross-env NODE_ENV=dev electron .",
+    "electron:build": "vue-tsc --noEmit && vite build && electron-builder",
+    "electron:buildExe": "cross-env NODE_ENV=dev vue-tsc --noEmit && vite build && electron-builder --win nsis",
+    "electron:buildExe2": "cross-env NODE_ENV=dev vue-tsc --noEmit && vite build && electron-builder --win nsis -c.extraMetadata.productName=LayUiVueSample2 -c.extraMetadata.appId=com.example.layUiVueSample2",
+    "electron:buildDeb": "cross-env NODE_ENV=dev vue-tsc --noEmit && vite build && electron-builder --linux deb",
+    "electron:buildAppImage": "cross-env NODE_ENV=dev vue-tsc --noEmit && vite build && electron-builder --linux AppImage"
+  },
+  "dependencies": {
+    "@layui/layui-vue": "^2.14.0",
+    "vue": "^3.3.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.3.3",
+    "@vue/compiler-sfc": "^3.3.4",
+    "cross-env": "^7.0.3",
+    "electron": "^34.1.1",
+    "electron-builder": "^25.1.8",
+    "electron-log": "^5.3.0",
+    "electron-packager": "^17.1.2",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.9",
+    "vue-tsc": "^2.2.0"
+  },
+  "build": {
+    "asar": true,
+    "asarUnpack": [
+      "/**/*"
+    ],
+    "appId": "com.example.layUiVueSample",
+    "productName": "LayUiVueSample",
+    "directories": {
+      "output": "distApp",
+      "buildResources": "assets"
+    },
+    "files": [
+      "dist/**/*",
+      "main.js",
+      "package.json",
+      "!node_modules/**/*"
+    ],
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "Development",
+      "icon": "public/logo.png"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "createDesktopShortcut": true,
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "unicode": true,
+      "perMachine": false
+    }
+  },
+  "license": "CCPL-4.0"
+}
