@@ -22,7 +22,7 @@ function createWindow() {
         mainWindow.loadURL('http://localhost:3333');
     } else {
         mainWindow.setMenuBarVisibility(false); // 隐藏菜单栏
-        mainWindow.loadURL('https://appcms.1234985.xyz');
+        mainWindow.loadURL('https://www.baidu.com');
     }
 
 }
