@@ -10,11 +10,10 @@
     "url": "https://github.com/pzen666/pzen-springboot-17-demo"
   },
   "scripts": {
-    "dev": "NODE_ENV=dev vite",
+    "dev": "cross-env NODE_ENV=dev vite",
     "build": "cross-env NODE_ENV=dev vite build",
     "serve": "vite preview",
-    "electron:dev": "vite && electron .",
-    "electron:start": "cross-env NODE_ENV=dev electron .",
+    "electron:dev": "vite build && cross-env NODE_ENV=dev electron .",
     "electron:build": "vue-tsc --noEmit && vite build && electron-builder",
     "electron:buildExe": "cross-env NODE_ENV=dev vue-tsc --noEmit && vite build && electron-builder --win nsis",
     "electron:buildExe2": "cross-env NODE_ENV=dev vue-tsc --noEmit && vite build && electron-builder --win nsis -c.extraMetadata.productName=LayUiVueSample2 -c.extraMetadata.appId=com.example.layUiVueSample2",
@@ -44,9 +43,9 @@
     ],
     "appId": "com.example.layUiVueSample",
     "productName": "LayUiVueSample",
-    "directories": {
-      "output": "distApp",
-      "buildResources": "assets"
+    "directories":  {
+      "buildResources": "buildResources",
+      "output": "out"
     },
     "files": [
       "dist/**/*",
@@ -63,7 +62,8 @@
       "icon": "public/logo.png"
     },
     "win": {
-      "target": "nsis"
+      "target": "nsis",
+      "icon": "public/logo.png"
     },
     "nsis": {
       "createDesktopShortcut": true,

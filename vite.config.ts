@@ -4,6 +4,10 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: './',
+  define: {
+    __dirname: '"."' // 替换为当前目录的相对路径
+  },
   plugins: [vue()],
   server: {
     port: 3333
@@ -16,7 +20,10 @@ export default defineConfig({
     }
   },
   build: {
-    outDir: 'dist'
+    outDir: 'dist',
+    rollupOptions: {
+      external: ['path'], // 将 'path' 模块标记为外部依赖
+    },
   },
   resolve: {
     alias: {
