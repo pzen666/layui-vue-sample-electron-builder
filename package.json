@@ -37,12 +37,12 @@
     "vue-tsc": "^2.2.0"
   },
   "build": {
+    "appId": "com.example.layUiVueSample",
+    "productName": "LayUiVueSample",
     "asar": true,
     "asarUnpack": [
       "/**/*"
     ],
-    "appId": "com.example.layUiVueSample",
-    "productName": "LayUiVueSample",
     "directories":  {
       "buildResources": "buildResources",
       "output": "out"
